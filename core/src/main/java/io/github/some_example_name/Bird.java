@@ -12,9 +12,7 @@ public class Bird {
     public Vector2 position;
     public Vector2 velocity;
 
-    //public Rectangle bound;
 
-    public boolean isGrounded = false; // 땅에 닿으면 끝
 
     public Bird(Texture texture, float startX, float startY, float speed) {
         // 물리 상태 초기화
@@ -24,15 +22,11 @@ public class Bird {
         this.sprite = new Sprite(texture);
         this.sprite.setSize(sprite.getWidth() * 1.5f, sprite.getHeight() * 1.5f);
         this.sprite.setPosition(position.x, position.y);
-        //bound = new Rectangle(position.x,position.y,sprite.getWidth(),sprite.getHeight());
+
     }
 
     public void jump(){
         velocity.y = 400; // 점프
-    }
-
-    public void syncSpriteToPosition() {
-        sprite.setPosition(position.x, position.y);
     }
 
     public void draw(SpriteBatch batch) {

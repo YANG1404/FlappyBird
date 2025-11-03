@@ -67,8 +67,8 @@ public class Main extends ApplicationAdapter {
         batch = new SpriteBatch();
 
         camera = new OrthographicCamera();
-        viewport = new FitViewport(800,1200, camera);
-        Gdx.graphics.setWindowedMode(800, 1200);
+        viewport = new FitViewport(600,600, camera);
+        Gdx.graphics.setWindowedMode(600, 600);
         //camera.setToOrtho(false,800,1200);
 
         background = new Texture("Sprite/background-day_mul4.png");
@@ -84,17 +84,18 @@ public class Main extends ApplicationAdapter {
 
 
 
-        level = 3;
+        level = 1;
         world = new GameWorld(birdTexture,pipeTexture,enemyTexture,beamTexture,level);
 
 
         //camera.position.set(200, 600, 0);
-        camera.position.set(world.getBird().sprite.getX()+world.getBird().position.x+birdTexture.getWidth()/2,600,0);
+        camera.position.set(world.getBird().position.x+200, world.getBird().position.y, 0);
+        //camera.position.set(world.getBird().sprite.getX()+world.getBird().position.x+birdTexture.getWidth()/2,600,0);
         currentState = GameState.READY;
 
         // --- 2. 폰트 및 레이아웃 초기화 ---
         font = new BitmapFont(); // LibGDX 기본 폰트 로드
-        font.getData().setScale(2.5f); // 폰트 크기 2.5배
+        font.getData().setScale(1f); // 폰트 크기 2.5배
         layout = new GlyphLayout(); // 중앙 정렬 헬퍼 초기화
 
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgm.wav"));
@@ -143,7 +144,7 @@ public class Main extends ApplicationAdapter {
 
         //)
         currentState =world.update(Gdx.graphics.getDeltaTime(),currentState);
-        camera.position.set(world.getBird().position.x+300, 600, 0);
+        camera.position.set(world.getBird().position.x+200, world.getBird().position.y, 0);
         //camera.position.set(world.getBird().sprite.getX()+300,600,0);
 
 
@@ -162,7 +163,7 @@ public class Main extends ApplicationAdapter {
 
 
         // 배경 및 바닥 구성
-        batch.draw(background, 0, 0,3200f,1200f);
+        batch.draw(background, -100, 0,3200f,1200f);
         batch.draw(base, 0, 0,800f,50f);
         batch.draw(base, 800, 0,800f,50f);
         batch.draw(base, 1600, 0,800f,50f);
@@ -172,10 +173,10 @@ public class Main extends ApplicationAdapter {
         world.getBird().draw(batch);
         world.draw(batch);
         if(currentState==GameState.FAILED){
-            batch.draw(sadcat,camera.position.x-300, 300, 600, 600);
+            batch.draw(sadcat,camera.position.x-200, camera.position.y-200, 400, 400);
         }
         if(currentState==GameState.CLEARED) {
-            batch.draw(gigachad, 100, 200, 600, 800);
+            batch.draw(gigachad, camera.position.x-250, camera.position.y-300, 500, 600);
         }
 
         batch.end();
@@ -249,7 +250,7 @@ public class Main extends ApplicationAdapter {
         this.level = level;
         currentState = GameState.READY;
         world.dispose();
-        clearSound.dispose();
+        clearSound.stop();
         backgroundMusic.setLooping(true); // 반복 재생
         backgroundMusic.setVolume(0.2f);  // 볼륨 50%
         backgroundMusic.play();
@@ -267,19 +268,19 @@ public class Main extends ApplicationAdapter {
 
         font.draw(batch,
             "GoalScore: " + world.getGoalScore(),
-            Gdx.graphics.getWidth() - "GoalScore: ".length()*20,
+            Gdx.graphics.getWidth() - "GoalScore: ".length()*9,
             Gdx.graphics.getHeight() - 20);
 
         font.draw(batch,
             "Level: " + level,
-            Gdx.graphics.getWidth()/2 - "Level: ".length()*10,
+            Gdx.graphics.getWidth()/2 - "Level: ".length()*5,
             Gdx.graphics.getHeight() - 20);
 
         if (level >= 3) {
             font.draw(batch,
                 "SPACE TO SHOOT",
-                Gdx.graphics.getWidth()/2 - "SPACE TO SHOOT".length()*12,
-                100f);
+                Gdx.graphics.getWidth()/2 - "SPACE TO SHOOT".length()*6,
+                50f);
         }
         // (B) 상태별 UI (화면 중앙)
         switch (currentState) {

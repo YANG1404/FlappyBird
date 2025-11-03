@@ -40,7 +40,7 @@ public class GameWorld {
 
 
     public GameWorld(Texture birdTexture, Texture pipeTexture, Texture enemyTexture, Texture beamTexture, int level) {
-        this.bird = new Bird(birdTexture, 100, 600, 100);
+        this.bird = new Bird(birdTexture, 100, 600, 100+((level-1)*50f));
         this.pipes = new Array<>();
         this.enemies = new Array<>();
         this.enemyTexture = enemyTexture;
@@ -81,7 +81,7 @@ public class GameWorld {
             if(currentState==Main.GameState.RUNNING){
                 pair.update(delta);
             }
-            if(birdBound.overlaps(pair.getTopBound())||birdBound.overlaps(pair.getBottomBound())||bird.sprite.getY()<100f){
+            if(birdBound.overlaps(pair.getTopBound())||birdBound.overlaps(pair.getBottomBound())||bird.sprite.getY()<50f){
                 currentState= gameFailed(currentState);
             }
         }
@@ -233,7 +233,7 @@ public class GameWorld {
             pipes.shuffle();
             for (int i = 0; i < movingPipeCount; i++) {
                 PairPipe pipeToMove = pipes.get(i);
-                pipeToMove.setTextureRed(pipeTexture_Red);
+                pipeToMove.setTexture(pipeTexture_Red);
                 pipeToMove.enableMovement(100f, 50f);
 
             }

@@ -124,7 +124,7 @@ public class PairPipe {
     }
 
 
-    public void setTextureRed(Texture pipeTexture){ // 빨간 색 파이프로 변환
+    public void setTexture(Texture pipeTexture){ // 빨간 색 파이프로 변환
         topPipe.setTexture(pipeTexture);
         bottomPipe.setTexture(pipeTexture);
     }
