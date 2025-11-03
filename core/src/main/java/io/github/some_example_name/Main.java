@@ -67,9 +67,10 @@ public class Main extends ApplicationAdapter {
         batch = new SpriteBatch();
 
         camera = new OrthographicCamera();
+
         viewport = new FitViewport(600,600, camera);
         Gdx.graphics.setWindowedMode(600, 600);
-        //camera.setToOrtho(false,800,1200);
+
 
         background = new Texture("Sprite/background-day_mul4.png");
         base = new Texture("Sprite/base.png");
@@ -88,9 +89,11 @@ public class Main extends ApplicationAdapter {
         world = new GameWorld(birdTexture,pipeTexture,enemyTexture,beamTexture,level);
 
 
-        //camera.position.set(200, 600, 0);
+
         camera.position.set(world.getBird().position.x+200, world.getBird().position.y, 0);
-        //camera.position.set(world.getBird().sprite.getX()+world.getBird().position.x+birdTexture.getWidth()/2,600,0);
+
+        //camera.position.set(world.getBird().position.x+700, 600, 0);
+
         currentState = GameState.READY;
 
         // --- 2. 폰트 및 레이아웃 초기화 ---
@@ -145,7 +148,8 @@ public class Main extends ApplicationAdapter {
         //)
         currentState =world.update(Gdx.graphics.getDeltaTime(),currentState);
         camera.position.set(world.getBird().position.x+200, world.getBird().position.y, 0);
-        //camera.position.set(world.getBird().sprite.getX()+300,600,0);
+
+        //camera.position.set(world.getBird().sprite.getX()+700,600,0);
 
 
 

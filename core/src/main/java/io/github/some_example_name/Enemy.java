@@ -50,11 +50,8 @@ public class Enemy {
         }
         else
         {
-            float targetX = parentPipe.initalX + (parentPipe.bottomPipe.getWidth()/2) - (sprite.getWidth()/2);
             float targetY = parentPipe.bottomPipe.getY() + parentPipe.bottomPipe.getHeight();
-
             float newPositionX = position.x + velocity.x * delta;
-
 
             position.set(newPositionX,targetY);
             bounds.setPosition(position);
@@ -63,7 +60,6 @@ public class Enemy {
             if(velocity.x < 0.1f){
                 velocity.x=0;
             }
-
         }
 
         // 3. 그래픽/충돌 영역 동기화

@@ -15,7 +15,7 @@ public class GameWorld {
     Array<Beam> beams;
     private Texture beamTexture;
 
-    private int pipesNum=5;
+    private int pipesNum;
     private float firstPipeX=300;
     private float pipeGapX=400;
     private int goalScore=5;
@@ -53,7 +53,7 @@ public class GameWorld {
 
         this.pipeTexture_Red = new Texture("Sprite/pipe-red.png");
 
-        this.goalScore = 5;
+        this.goalScore = 4+level;
         this.pipesNum = goalScore;
         this.score = 0;
         this.firstPipeX = 300;
@@ -235,7 +235,6 @@ public class GameWorld {
                 PairPipe pipeToMove = pipes.get(i);
                 pipeToMove.setTexture(pipeTexture_Red);
                 pipeToMove.enableMovement(100f, 50f);
-
             }
         }
 
