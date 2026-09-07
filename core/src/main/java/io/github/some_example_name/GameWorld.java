@@ -47,9 +47,9 @@ public class GameWorld {
         this.beams = new Array<>();
         this.beamTexture = beamTexture;
         this.level = level;
-        this.passSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pass.wav"));
+        this.passSound = Gdx.audio.newSound(Gdx.files.internal("Sounds/pass.wav"));
 
-        this.failedMusic = Gdx.audio.newSound(Gdx.files.internal("sounds/failedmusic.wav"));
+        this.failedMusic = Gdx.audio.newSound(Gdx.files.internal("Sounds/failedmusic.wav"));
 
         this.pipeTexture_Red = new Texture("Sprite/pipe-red.png");
 
