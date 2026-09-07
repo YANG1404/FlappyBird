@@ -101,12 +101,12 @@ public class Main extends ApplicationAdapter {
         font.getData().setScale(1f); // 폰트 크기 2.5배
         layout = new GlyphLayout(); // 중앙 정렬 헬퍼 초기화
 
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/bgm.wav"));
-        jumpSound = Gdx.audio.newSound(Gdx.files.internal("sounds/jump.wav"));
-        shootSound = Gdx.audio.newSound(Gdx.files.internal("sounds/shoot.wav"));
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("Sounds/bgm.wav"));
+        jumpSound = Gdx.audio.newSound(Gdx.files.internal("Sounds/jump.wav"));
+        shootSound = Gdx.audio.newSound(Gdx.files.internal("Sounds/shoot.wav"));
 
-        clearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/clear.wav"));
-        levelUpSound = Gdx.audio.newSound(Gdx.files.internal("sounds/levelup.wav"));
+        clearSound = Gdx.audio.newSound(Gdx.files.internal("Sounds/clear.wav"));
+        levelUpSound = Gdx.audio.newSound(Gdx.files.internal("Sounds/levelup.wav"));
 
 
 
